@@ -34,10 +34,10 @@ This tutorial outlines the implementation of on-premises Active Directory within
     <li>Setup Resources in Azure</li>
     <ul>
       <li>Create a Resource Group.</li>
-      <li>Create a Virtual Network (VNet</li>
+      <li>Create a Virtual Machine, it will automatically generate a virtual network and subnet.</li>
     </ul>
   </ul>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/sBKP3Bc.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
@@ -49,7 +49,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
       <li>Set Domain Controller’s NIC Private IP address to be static.</li>
     </ul>
   </ul>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
@@ -70,6 +70,10 @@ This tutorial outlines the implementation of on-premises Active Directory within
     <li>Ensure Connectivity between the client and Domain Controller:</li>
     <ul>
       <li>Ping DC-1’s private IP address from Client-1 using perpetual ping.</li>
+      <ul>
+        <li>Copy Client-1's public IP address.</li>
+        <li>Go to the Start menu, navigate to Remote Desktop, enter the IP address, and log in using the credentials we created in Azure.</li>
+      </ul>
       <li>Enable ICMPv4 on the local Windows Firewall of DC-1.</li>
     </ul>
   </ul>
