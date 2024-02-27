@@ -31,25 +31,13 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <p>
   <ul>
-    <li>Setup Resources in Azure</li>
-    <ul>
-      <li>Create a Resource Group.</li>
-      <li>Create a Virtual Machine, it will automatically generate a virtual network and subnet.</li>
-    </ul>
-  </ul>
-<img src="https://i.imgur.com/sBKP3Bc.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
-</p>
-<br />
-
-<p>
-  <ul>
     <li>Create the Domain Controller VM (Windows Server 2022) named "DC-1":</li>
     <ul>
       <li>Take note of the Resource Group and VNet created.</li>
       <li>Set Domain Controller’s NIC Private IP address to be static.</li>
     </ul>
   </ul>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/sBKP3Bc.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
@@ -61,7 +49,15 @@ This tutorial outlines the implementation of on-premises Active Directory within
       <li>Ensure both VMs are in the same VNet.</li>
     </ul>
   </ul>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/3Ninjmk.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<br />
+
+<p>
+  <ul>
+    <li>Set Domain Controller's NIC Private IP address to be static:</li>
+  </ul>
+<img src="https://i.imgur.com/RwiMngZ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
@@ -69,15 +65,14 @@ This tutorial outlines the implementation of on-premises Active Directory within
   <ul>
     <li>Ensure Connectivity between the client and Domain Controller:</li>
     <ul>
-      <li>Ping DC-1’s private IP address from Client-1 using perpetual ping.</li>
-      <ul>
-        <li>Copy Client-1's public IP address.</li>
-        <li>Go to the Start menu, navigate to Remote Desktop, enter the IP address, and log in using the credentials we created in Azure.</li>
-      </ul>
+      <li>Login to Client-1 and ping DC-1's IP address with ping -t (perpetual ping)</li>
+      <img src="https://i.imgur.com/RIaQ6XN.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <li>Enable ICMPv4 on the local Windows Firewall of DC-1.</li>
+      <img src="https://i.imgur.com/e92eX7Y.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <li>Check back at Client-1 to see the ping succeed</li>
+      <img src="https://i.imgur.com/03QWcq6.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
     </ul>
   </ul>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
@@ -86,11 +81,14 @@ This tutorial outlines the implementation of on-premises Active Directory within
     <li>Install Active Directory:</li>
     <ul>
       <li>Login to DC-1 and install Active Directory Domain Services.</li>
-      <li>Promote DC-1 as a DC and set up a new forest with a specified domain name.</li>
+      <img src="https://i.imgur.com/grGzzYX.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <li>Promote DC-1 as a Domain Controller.</li>
+      <img src="https://i.imgur.com/Vg8IeJT.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <li>Setup a new forest as mydomain.com</li>
+       <img src="https://i.imgur.com/8Lh9Dq4.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <li>Restart DC-1 and log back in as the designated user.</li>
     </ul>
   </ul>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
@@ -99,11 +97,15 @@ This tutorial outlines the implementation of on-premises Active Directory within
     <li>Create an Admin and Normal User Account in AD:</li>
     <ul>
       <li>Create OUs named "_EMPLOYEES" and "_ADMINS".</li>
+      <img src="https://i.imgur.com/b7LKMdq.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <img src="https://i.imgur.com/ETc7rdq.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <li>Create a new employee named “Jane Doe” with the username “jane_admin” and add to "Domain Admins" Security Group.</li>
+      <img src="https://i.imgur.com/8nP0Glo.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <img src="https://i.imgur.com/Dh7NU1m.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <li>Log in as “mydomain.com\jane_admin”.</li>
+      <img src="https://i.imgur.com/bpjOv0c.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
     </ul>
   </ul>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
@@ -112,8 +114,11 @@ This tutorial outlines the implementation of on-premises Active Directory within
     <li>Join Client-1 to your domain (mydomain.com):</li>
     <ul>
       <li>Set Client-1’s DNS settings to DC’s Private IP address.</li>
+       <img src="https://i.imgur.com/0oQh1TF.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <li>Restart Client-1 from Azure Portal.</li>
+       <img src="https://i.imgur.com/BlPQ5EM.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <li>Join Client-1 to the domain.</li>
+       <img src="https://i.imgur.com/BumRbxz.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <li>Verify Client-1 in ADUC on the Domain Controller.</li>
     </ul>
   </ul>
@@ -127,6 +132,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
     <ul>
       <li>Log into Client-1 as mydomain.com\jane_admin.</li>
       <li>Open system properties and allow "domain users" access to remote desktop.</li>
+      <img src="https://i.imgur.com/gxBpgKw.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
     </ul>
   </ul>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -140,6 +146,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
       <li>Login to DC-1 as jane_admin.</li>
       <li>Open PowerShell_ise as an administrator.</li>
       <li>Run the provided script to create new users.</li>
+       <img src="https://i.imgur.com/CziINh8.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <li>Observe the accounts in ADUC and attempt to log into Client-1 with one of the newly created accounts.</li>
     </ul>
   </ul>
