@@ -87,6 +87,8 @@ This tutorial outlines the implementation of on-premises Active Directory within
       <li>Setup a new forest as mydomain.com</li>
        <img src="https://i.imgur.com/8Lh9Dq4.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <li>Restart DC-1 and log back in as the designated user.</li>
+        <img src="https://i.imgur.com/41veWri.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+          <img src="https://i.imgur.com/uxhv4t2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
     </ul>
   </ul>
 </p>
@@ -100,9 +102,9 @@ This tutorial outlines the implementation of on-premises Active Directory within
       <img src="https://i.imgur.com/b7LKMdq.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <img src="https://i.imgur.com/ETc7rdq.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <li>Create a new employee named “Jane Doe” with the username “jane_admin” and add to "Domain Admins" Security Group.</li>
-      <img src="https://i.imgur.com/8nP0Glo.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-      <img src="https://i.imgur.com/Dh7NU1m.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-      <li>Log in as “mydomain.com\jane_admin”.</li>
+      <img src="https://i.imgur.com/2mavMFY.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+      <li>Log out, then log in as “mydomain.com\jane_admin”.</li>
       <img src="https://i.imgur.com/bpjOv0c.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
     </ul>
   </ul>
@@ -117,12 +119,10 @@ This tutorial outlines the implementation of on-premises Active Directory within
        <img src="https://i.imgur.com/0oQh1TF.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <li>Restart Client-1 from Azure Portal.</li>
        <img src="https://i.imgur.com/BlPQ5EM.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-      <li>Join Client-1 to the domain.</li>
-       <img src="https://i.imgur.com/BumRbxz.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-      <li>Verify Client-1 in ADUC on the Domain Controller.</li>
+      <li>Join Client-1 to the domain. Client-1 will restart.</li>
+       <img src="https://i.imgur.com/8nP0Glo.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
     </ul>
   </ul>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
@@ -135,7 +135,6 @@ This tutorial outlines the implementation of on-premises Active Directory within
       <img src="https://i.imgur.com/gxBpgKw.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
     </ul>
   </ul>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
@@ -144,12 +143,12 @@ This tutorial outlines the implementation of on-premises Active Directory within
     <li>Create additional users and attempt to log into Client-1 with one of the users:</li>
     <ul>
       <li>Login to DC-1 as jane_admin.</li>
+      <img src="https://i.imgur.com/mYijBqq.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <li>Open PowerShell_ise as an administrator.</li>
       <li>Run the provided script to create new users.</li>
-       <img src="https://i.imgur.com/CziINh8.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
       <li>Observe the accounts in ADUC and attempt to log into Client-1 with one of the newly created accounts.</li>
+       <img src="https://i.imgur.com/CziINh8.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
     </ul>
   </ul>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
